@@ -1,0 +1,24 @@
+plugins {
+	id 'org.springframework.boot' version '2.1.7.RELEASE'
+	id 'java'
+	id 'idea'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+repositories {
+	mavenCentral()
+}
+
+idea {
+	module {
+		outputDir file('build/classes/main')
+		testOutputDir file('build/classes/test')
+	}
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
