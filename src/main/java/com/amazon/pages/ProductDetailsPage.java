@@ -1,8 +1,8 @@
 package com.amazon.pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class ProductDetailsPage {
 
@@ -16,12 +16,7 @@ public class ProductDetailsPage {
         DRIVER.get(PRODUCT_DETAIL_URL);
     }
 
-    public boolean isAddToCartButtonExist() {
-        try {
-            DRIVER.findElement(ADD_TO_CART_BUTTON);
-            return true;
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+    public WebElement getAddToCardButton() {
+        return DRIVER.findElement(ADD_TO_CART_BUTTON);
     }
 }

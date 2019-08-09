@@ -4,7 +4,6 @@ import com.amazon.driver.ChromiumDriver;
 import com.amazon.pages.ProductDetailsPage;
 import org.junit.*;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -12,23 +11,22 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ProductDetailsTest {
 
-	private ProductDetailsPage productDetailsPage;
+	private static ProductDetailsPage productDetailsPage;
+	private static ChromiumDriver chromiumDriver;
 
-	@Autowired
-	ChromiumDriver chromiumDriver;
-
-	@Before
-	public void setUpBefore() {
+	@BeforeClass
+	public static void setUpBefore() {
+		chromiumDriver = new ChromiumDriver();
 		productDetailsPage = new ProductDetailsPage(chromiumDriver.run());
 	}
 
 	@Test
 	public void shouldExistAddToCartButton() {
-		Assert.assertTrue(productDetailsPage.isAddToCartButtonExist());
+		productDetailsPage.getAddToCardButton();
 	}
 
-	@After
-	public void setUpAfter() {
+	@AfterClass
+	public static void setUpAfter() {
 		chromiumDriver.stop();
 	}
 }
